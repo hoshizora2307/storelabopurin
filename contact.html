@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜信州濃厚プリン</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFBF3; --paper-2:#FFF4DE; --ink:#241A0E; --sub:#5B4A34;
+  --red:#C23B2A; --red-deep:#9C2A1E; --red-glow:rgba(194,59,42,.22);
+  --gold-1:#8A6B33; --gold-2:#F1DA97; --gold-3:#C79A3E; --gold-4:#5A431F;
+  --line:#E9DCC0; --cream-panel:#FFF9EE;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased;padding-bottom:40px}
+.jp{font-family:"Shippori Mincho B1",serif}
+.wrap{max-width:620px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+
+.head{background:var(--paper);border-bottom:1px solid var(--line)}
+.head .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.head .logo{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
+.head .logo::before{content:"";width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold-2),var(--gold-1))}
+.head .back{font-size:12.5px;color:var(--sub)}
+
+.hero{padding:32px 0 6px;text-align:center}
+.hero .tag{display:inline-block;background:var(--ink);color:var(--gold-2);font-size:11.5px;font-weight:700;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.hero h1{font-size:clamp(22px,6vw,28px);font-weight:800}
+.hero p{margin-top:10px;font-size:13px;color:var(--sub)}
+
+.contact-alt{background:var(--cream-panel);border:1.5px solid var(--gold-3);border-radius:10px;padding:16px 18px;margin:20px 0;font-size:13px;color:var(--ink)}
+.contact-alt b{display:block;margin-bottom:4px}
+.contact-alt a{color:var(--red-deep);font-weight:700;text-decoration:underline}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;margin-top:18px}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--sub);margin-bottom:6px}
+input[type=text],input[type=email],select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 12px;font-size:14.5px;font-family:inherit;color:var(--ink);background:#fff}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--gold-3);outline-offset:1px}
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+
+.err{color:var(--red-deep);font-size:12.5px;margin-top:10px;display:none}
+.err.show{display:block}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:9px;font-weight:800;font-size:15px;
+  text-decoration:none;margin-top:16px;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(180deg,var(--gold-2),var(--gold-3));color:#3A2A10;box-shadow:0 8px 20px rgba(199,154,62,.35)}
+.btn-ghost{background:var(--cream-panel);color:var(--ink);border:1px solid var(--line)}
+
+.thanks{display:none;background:linear-gradient(160deg,var(--ink),#1a1108);color:#fff;border-radius:14px;padding:30px 26px;margin-top:18px;text-align:center}
+.thanks.show{display:block}
+.thanks h2{color:var(--gold-2);font-size:18px;font-weight:800;margin-bottom:14px}
+.thanks p{font-size:14px;line-height:2;color:#E7DCC0}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a href="index.html" class="logo">信州濃厚プリン</a>
+    <a href="index.html" class="back">← 商品ページに戻る</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="tag">CONTACT</span>
+    <h1 class="jp">お問い合わせ</h1>
+    <p>商品に関するご質問、ご注文に関するお問い合わせなどはこちらから承ります。</p>
+  </div>
+
+  <div class="contact-alt">
+    <b>📞 お急ぎの場合</b>
+    お電話でも承っております：<a href="tel:0261850131">0261-85-0131</a>（9:00～17:00　土日祝除く）
+  </div>
+
+  <form id="contactForm">
+    <div class="card">
+      <div class="field">
+        <label for="cname">お名前 <span style="color:var(--red)">*</span></label>
+        <input type="text" id="cname" placeholder="例）山田 太郎" required>
+      </div>
+      <div class="field">
+        <label for="cemail">メールアドレス <span style="color:var(--red)">*</span></label>
+        <input type="email" id="cemail" placeholder="例）example@mail.com" required>
+      </div>
+      <div class="field">
+        <label for="ctype">お問い合わせ内容</label>
+        <select id="ctype">
+          <option value="商品について">商品について</option>
+          <option value="ご注文について">ご注文について</option>
+          <option value="ホテルでの取り扱いについて">ホテルでの取り扱いについて</option>
+          <option value="弊社商品の取り扱いのご希望">弊社商品の取り扱いのご希望</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cmessage">お問い合わせ詳細 <span style="color:var(--red)">*</span></label>
+        <textarea id="cmessage" rows="6" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+      </div>
+      <div class="err" id="formErr">お名前・メールアドレス・お問い合わせ詳細をご入力ください。</div>
+      <button type="button" id="sendBtn" class="btn btn-primary">この内容で送信する</button>
+    </div>
+  </form>
+
+  <div class="thanks" id="thanksBox">
+    <h2>✉️ お問い合わせありがとうございました</h2>
+    <p>内容を確認のうえ、担当より折り返しご連絡いたします。<br>今しばらくお待ちください。</p>
+    <a href="index.html" class="btn btn-ghost" style="margin-top:18px">商品ページに戻る</a>
+  </div>
+</div>
+
+<script>
+document.getElementById('sendBtn').addEventListener('click', ()=>{
+  const name = document.getElementById('cname').value.trim();
+  const email = document.getElementById('cemail').value.trim();
+  const type = document.getElementById('ctype').value;
+  const message = document.getElementById('cmessage').value.trim();
+  const errEl = document.getElementById('formErr');
+
+  if(!name || !email || !message){ errEl.classList.add('show'); return; }
+  errEl.classList.remove('show');
+
+  const body = [
+    `お名前：${name}`,
+    `メールアドレス：${email}`,
+    `お問い合わせ内容：${type}`,
+    '',
+    message
+  ].join('\n');
+
+  const a = document.createElement('a');
+  a.href = 'mailto:info@mondocolo.com'
+    + '?subject=' + encodeURIComponent(`【お問い合わせ】${type}（${name}様）`)
+    + '&body=' + encodeURIComponent(body);
+  a.click();
+
+  document.getElementById('contactForm').style.display = 'none';
+  const thanks = document.getElementById('thanksBox');
+  thanks.classList.add('show');
+  thanks.scrollIntoView({behavior:'smooth', block:'start'});
+});
+</script>
+</body>
+</html>
